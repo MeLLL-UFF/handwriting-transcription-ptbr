@@ -3,13 +3,15 @@
 ## Run demo
 1. Download Pytorch CRAFT text detector tool: https://github.com/clovaai/CRAFT-pytorch
 2. Unzip folder downloaded in the step 1 and insert it inside PTBR-HTranscription folder
-3. Download "General" pretrained model in the section "Test instruction using pretrained model" from https://github.com/clovaai/CRAFT-pytorch
-4. Create "weights" folder inside PTBR-HTranscription folder and insert the model file downloaded in the step 3
-5. Download SimpleHTR tool: https://github.com/githubharald/SimpleHTR
-6. Unzip folder downloaded in the step 5 and insert it inside PTBR-HTranscription folder
-7. Download "Model trained on word images" in the section "Run demo" from https://github.com/githubharald/SimpleHTR
-8. Insert downloaded files in the step 7 inside "model" folder in PTBR-HTranscription folder
-9. Change model_dir at SimpleHTR-master/src/model.py (Line 156) to "./model"
-10. Create "data" folder inside PTBR-HTranscription folder
-11. Insert image file (.jpg, .jpeg, .gif, .png, .pgm) into a specific folder inside "data" folder.
-12. Go to PTBR-HTranscription folder and run "transcriber.py"
+3. Create "__init__.py" file and insert it in unzipped folder
+4. Download "General" pretrained model in the section "Test instruction using pretrained model" from https://github.com/clovaai/CRAFT-pytorch
+5. Create "weights" folder inside PTBR-HTranscription folder and insert the model file downloaded in the step 3
+6. Download SimpleHTR tool: https://github.com/githubharald/SimpleHTR
+7. Unzip folder downloaded in the step 5 and insert it inside PTBR-HTranscription folder
+8. Create "__init__.py" file and insert it in unzipped folder
+9. Download "Model trained on word images" in the section "Run demo" from https://github.com/githubharald/SimpleHTR
+10. Insert downloaded files in the step 7 inside "model" folder in PTBR-HTranscription folder
+11. Change model_dir at SimpleHTR-master/src/model.py (Line 156) to "./model"
+12. Create "data" folder inside PTBR-HTranscription folder
+13. Insert image file (.jpg, .jpeg, .gif, .png, .pgm) into a specific folder inside "data" folder.
+14. Go to PTBR-HTranscription folder and run "transcriber.py"
