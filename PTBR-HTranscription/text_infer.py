@@ -14,8 +14,8 @@ decoder_mapping = {'bestpath': DecoderType.BestPath,
                         'wordbeamsearch': DecoderType.WordBeamSearch}
 
 # map token unity to its label file
-token_unity_mapping = {'word': './SimpleHTR-master/model/charList.txt',
-                        'line': './SimpleHTR-master/model/wordCharList.txt'}
+token_unity_mapping = {'word': '../model/charList.txt',
+                        'line': '../model/wordCharList.txt'}
 
 ## Load pretrained model
 # @param decoder name of decode method used for inference
@@ -63,8 +63,10 @@ def infer_text(model, words_path):
     data_paths = os.listdir(words_path)
     if(data_paths):
         print("Infering text from word images...")
-        # sort path names based on its number at the end (0, 1, 2,... != 0, 1, 10, ..., 2)
-        data_paths.sort(key=get_crop_number)
+        
+        if(len(data_paths) > 1):
+            # sort path names based on its number at the end (0, 1, 2,... != 0, 1, 10, ..., 2)
+            data_paths.sort(key=get_crop_number)
         
         inferred_text = ""   #result text from words inference
 
@@ -74,6 +76,7 @@ def infer_text(model, words_path):
                 recognized, probability = infer_word(model, words_path+path)
             except ValueError: #catch error when input image doesn't fit as model input
                 recognized = '<UNK-infer>'
+                print("Image from \'", path, "\' file couldn't be used as model input image.\nInference replaced with <UNK-infer> in final inferred text.\n")
             #print(path, ":", recognized)
             inferred_text += recognized + " "
 
