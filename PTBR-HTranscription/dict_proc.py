@@ -41,9 +41,8 @@ def dict_indexing(pt_dict, k_sim):
 def find_similarities(index, pt_dict, infered_text):
     print("Searching for words similarities in pt-br dictionary...")
     subtext = ""
-    infered_text = infered_text.lower()     #avoid simhash replacing not lower words for the lower version
     for t in infered_text.split(" "):
-        if t not in pt_dict.values:
+        if t.lower() not in pt_dict.values:
             w = Simhash(get_features(t))
             sims = index.get_near_dups(w)
             if len(sims) > 0:

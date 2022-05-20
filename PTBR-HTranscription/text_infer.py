@@ -14,8 +14,8 @@ decoder_mapping = {'bestpath': DecoderType.BestPath,
                         'wordbeamsearch': DecoderType.WordBeamSearch}
 
 # map token unity to its label file
-token_unity_mapping = {'word': '../model/charList.txt',
-                        'line': '../model/wordCharList.txt'}
+token_unity_mapping = {'word': './model/charList.txt',
+                        'line': './model/wordCharList.txt'}
 
 ## Load pretrained model
 # @param decoder name of decode method used for inference
