@@ -15,5 +15,5 @@
 12. Create `data` folder inside `PTBR-HTranscription` folder
 13. Insert image file *(.jpg, .jpeg, .gif, .png, .pgm)* into a subfolder inside `data` folder.
 14. Download [Brazilian Portuguese dictionary](https://sites.icmc.usp.br/taspardo/dicionario_port.zip)
-15. Insert downloaded file in the step 14 inside `PTBR-HTranscription` folder
+15. Insert unzipped downloaded file in the step 14 inside `PTBR-HTranscription` folder
 16. Go to `PTBR-HTranscription` folder and run `transcriber.py`
