@@ -5,12 +5,12 @@
 2. Unzip folder downloaded in the step 1 and insert it inside `PTBR-HTranscription` folder
 3. Create `__init__.py` file and insert it in unzipped folder
 4. Download ***General*** pretrained model in the section "*[Test instruction using pretrained model](https://github.com/clovaai/CRAFT-pytorch#test-instruction-using-pretrained-model)*" from CRAFT tool
-5. Create `weights` folder inside `PTBR-HTranscription` folder and insert the model file downloaded in the step 3
+5. Create `weights` folder inside `PTBR-HTranscription` folder and insert the model file downloaded in the step 4
 6. Download [Handwritten Text Recognition with TensorFlow (SimpleHTR)](https://github.com/githubharald/SimpleHTR) tool
 7. Unzip folder downloaded in the step 6 and insert it inside `PTBR-HTranscription` folder
 8. Create `__init__.py` file and insert it in unzipped folder
 9. Download ***Model trained on word images*** in the section "*[Run demo](https://github.com/githubharald/SimpleHTR#run-demo)*" from SimpleHTR tool
-10. Insert downloaded files in the step 9 inside `model` folder in `PTBR-HTranscription` folder
+10. Insert unzipped downloaded files in the step 9 inside `model` folder in `PTBR-HTranscription` folder
 11. Change ***model_dir*** at `SimpleHTR-master/src/model.py` (Line 156) to *"./model"*
 12. Create `data` folder inside `PTBR-HTranscription` folder
 13. Insert image file *(.jpg, .jpeg, .gif, .png, .pgm)* into a subfolder inside `data` folder.
