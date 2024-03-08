@@ -57,7 +57,7 @@ def crop_images(image_path, image_file, words_path, coord_list, median_threshold
     image = cv2.imread(image_path+"/"+image_file)
 
     # calculate median height from word images
-    if(median_threshold > 0):
+    if(median_threshold > 0 and len(coord_list) > 0):
         mid_height = get_median_height(coord_list)
 
     #get coordinates and crop image
@@ -107,38 +107,42 @@ def crop_images(image_path, image_file, words_path, coord_list, median_threshold
 # @param median_threshold value used to split word images with height greater than
 # @return int value with the number of saved images
 def create_word_images(data_path, words_path, median_threshold):
-    data_files = os.listdir(data_path)
     crops = 0                       #number of words cropped into images
     coord_file = ""
     image_file = ""
     
-    # set file path for coordinate file and original image file based on their extension and name
-    for i in range(len(data_files)):
-        if(os.path.isfile(data_path+data_files[i])):
-            file_name, file_ext = os.path.splitext(data_files[i])
-            if(file_ext == ".txt"):
-                coord_file = data_path+data_files[i]
-            else:
-                if(file_name.split("_")[0] != "res"):
-                    image_file = data_files[i]
+    if(os.path.isdir(data_path)):
+        data_files = os.listdir(data_path)
 
-    if(coord_file == ""):
-        print("Missing coordinates text file (.txt) in "+str(data_path))
-        return crops
+        # set file path for coordinate file and original image file based on their extension and name
+        for i in range(len(data_files)):
+            if(os.path.isfile(data_path+data_files[i])):
+                file_name, file_ext = os.path.splitext(data_files[i])
+                if(file_ext == ".txt"):
+                    coord_file = data_path+data_files[i]
+                else:
+                    if(file_name.split("_")[0] != "res"):
+                        image_file = data_files[i]
 
-    if(image_file == ""):
-        print("Missing original image file in "+str(data_path))
-        return crops
+        if(coord_file == ""):
+            print("Missing coordinates text file (.txt) in "+str(data_path))
+            return crops
 
-    # create a list with coordinates 
-    coord_list = list_coords(coord_file)
-    coords = len(coord_list)
+        if(image_file == ""):
+            print("Missing original image file in "+str(data_path))
+            return crops
 
-    # crop word images based on coordinates list
-    crops = crop_images(data_path, image_file, words_path, coord_list, median_threshold)
-    print(crops, "word image files created.")
+        # create a list with coordinates 
+        coord_list = list_coords(coord_file)
+        coords = len(coord_list)
 
-    if(coords != crops):
-        print("Number of coordinates ("+str(coords)+") differ from number of cropped words ("+str(crops)+").")      
-    
+        # crop word images based on coordinates list
+        crops = crop_images(data_path, image_file, words_path, coord_list, median_threshold)
+        print(crops, "word image files created.")
+
+        if(coords != crops):
+            print("Number of coordinates ("+str(coords)+") differ from number of cropped words ("+str(crops)+").")      
+    else:
+        print(data_path + " is not a valid path.")
+
     return crops
