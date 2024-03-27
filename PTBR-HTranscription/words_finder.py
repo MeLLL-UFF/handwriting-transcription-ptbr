@@ -20,7 +20,7 @@ refiner_model = ""
 # @param craft_args tool arguments
 # @param model_folder pretrained model folder
 # @param refiner_model pretrained refiner model
-def run_craft(image_list, result_folder, craft_args, model_folder=model_folder,  refiner_model=refiner_model):
+def run_craft(image_list, result_folder, craft_args, res_path, model_folder=model_folder,  refiner_model=refiner_model, ):
     # load CRAFT net
     net = CRAFT()
     print('Loading weights from checkpoint (' + model_folder + ')')
@@ -68,10 +68,13 @@ def run_craft(image_list, result_folder, craft_args, model_folder=model_folder, 
 
         # save score text
         filename, file_ext = os.path.splitext(os.path.basename(image_path))
-        mask_file = result_folder + "/res_" + filename + '_mask.jpg'
+        resp = res_path + filename + "/"
+        if not os.path.isdir(resp):
+            os.mkdir(resp)
+        mask_file = resp + "res_" + filename + '_mask.jpg'
         cv2.imwrite(mask_file, score_text)
 
-        saveResult(image_path, image[:,:,::-1], polys, dirname=result_folder)
+        saveResult(image_path, image[:,:,::-1], polys, dirname=resp)
 
     print("elapsed time : {}s".format(time.time() - t))
     return len(bboxes)

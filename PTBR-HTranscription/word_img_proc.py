@@ -106,7 +106,7 @@ def crop_images(image_path, image_file, words_path, coord_list, median_threshold
 # @param words_path result folder to store word images
 # @param median_threshold value used to split word images with height greater than
 # @return int value with the number of saved images
-def create_word_images(data_path, words_path, median_threshold):
+def create_word_images(data_path, words_path, median_threshold, res_path):
     crops = 0                       #number of words cropped into images
     coord_file = ""
     image_file = ""
@@ -116,6 +116,7 @@ def create_word_images(data_path, words_path, median_threshold):
 
         # set file path for coordinate file and original image file based on their extension and name
         for i in range(len(data_files)):
+            print('name',data_files[i])
             if(os.path.isfile(data_path+data_files[i])):
                 file_name, file_ext = os.path.splitext(data_files[i])
                 if(file_ext == ".txt"):
@@ -123,7 +124,7 @@ def create_word_images(data_path, words_path, median_threshold):
                 else:
                     if(file_name.split("_")[0] != "res"):
                         image_file = data_files[i]
-
+        print(coord_file, image_file)
         if(coord_file == ""):
             print("Missing coordinates text file (.txt) in "+str(data_path))
             return crops
