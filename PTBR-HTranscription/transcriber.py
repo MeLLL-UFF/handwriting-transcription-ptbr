@@ -120,11 +120,11 @@ if __name__ == '__main__':
             median_threshold = -1                   #'split images with height greater than median * median_threshold' (default = 0.8)
 
             #--------SIMPLEHTR----------[set decoder = '' to not execute this process]
-            decoder = ''                    #'method used for decoding info into words' (default = 'bestpath)
+            decoder = 'bestpath'                    #'method used for decoding info into words' (default = 'bestpath)
             token_unity = 'word'                    #'granularity level for inference processing' (default = 'word')
             
             #--------SIMHASH------------[set find_sims = -1 to not execute this process]
-            find_sims = -1                           #'distance value to find nearest word neighboors from dictionary' (default = 2)
+            find_sims = 2                           #'distance value to find nearest word neighboors from dictionary' (default = 2)
             inferred_file = ""                      #'inferred file to read text and refine with dictionary'
             
             process_folder(data_paths, decoder, token_unity, find_sims, median_threshold, craft_args, inferred_file)

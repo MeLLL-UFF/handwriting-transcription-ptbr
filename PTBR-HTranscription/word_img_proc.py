@@ -116,7 +116,6 @@ def create_word_images(data_path, words_path, median_threshold, res_path):
 
         # set file path for coordinate file and original image file based on their extension and name
         for i in range(len(data_files)):
-            print('name',data_files[i])
             if(os.path.isfile(data_path+data_files[i])):
                 file_name, file_ext = os.path.splitext(data_files[i])
                 if(file_ext == ".txt"):
